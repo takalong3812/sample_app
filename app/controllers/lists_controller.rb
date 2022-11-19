@@ -2,19 +2,19 @@ class ListsController < ApplicationController
   def new
     @list=List.new
   end
-  
+
+   
   def create
-    list = List.new(list_params)
-    list.save
+    @list = List.new(list_params)
+      @list.save
       flash[:notice]="投稿が成功しました"
       redirect_to list_path(@list.id)
+    
   end
-      @lists = List.all
-      render :index
-end
  
   
   def index
+  @lists = List.all
   end
 
   def show
